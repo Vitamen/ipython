@@ -245,7 +245,7 @@ define([
         // directory nav doesn't open new tabs
         // files, notebooks do
         if (model.type !== "directory") {
-            link.attr('target','_blank');
+            link.attr('target','_self');
         }
         var path_name = utils.url_path_join(path, name);
         if (model.type == 'file') {
@@ -457,7 +457,7 @@ define([
                         'notebooks',
                         path,
                         notebook_name),
-                    '_blank'
+                    '_self'
                 );
             },
             error : $.proxy(this.new_notebook_failed, this),
