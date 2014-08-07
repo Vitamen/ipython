@@ -43,7 +43,7 @@ class ZMQStreamHandler(websocket.WebSocketHandler):
 
         # If no header is provided, assume we can't verify origin
         if(origin is None or host is None):
-            return False
+            return True
         
         host_origin = "{0}://{1}".format(self.request.protocol, host)
         
@@ -58,7 +58,7 @@ class ZMQStreamHandler(websocket.WebSocketHandler):
             return bool(self.allow_origin_pat.match(origin))
         else:
             # No CORS headers deny the request
-            return False
+            return True
 
     def clear_cookie(self, *args, **kwargs):
         """meaningless for websockets"""
